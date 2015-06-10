@@ -1,21 +1,21 @@
-$(document).ready(function(){
-	var context = new AudioContext();
-	var url = "mp3/7am-smoked-salmon.mp3"
-	var audioElement = document.getElementById("audio");
-	
-	audioElement.addEventListener("canplay", function() {
-	    var source = context.createMediaElementSource(audioElement);
-	    source.connect(context.destination);
-	});
+function AudioThing () {
+	this.numOfFrequencyBands = 512;
+	this.context = new AudioContext();
+	this.frequencyData = new Uint8Array(this.numOfFrequencyBands);
+	this.output = this.context.destination;
+}
 
-	var request = new XMLHttpRequest();
-	request.open("GET", "mp3/7am-smoked-salmon", true);
-	request.responseType = "arraybuffer";
+Audio.prototype.configure = function(audio) {
+	console.log(this.audio)
+  	this.audio = audio;
+	this.audio.crossOrigin = 'anonymous';
+	this.source = this.context.createMediaElementSource(this.audio);
+	this.output = this.context.destination;
+	this.analyser = this.context.createAnalyser();
+	this.analyser.fftSize = this.numOfFrequencyBands * 2;
+	this.source.connect(this.analyser);
+	this.analyser.connect(this.output);
+};
 
-	request.onload = function() {
-	    var source = context.createBufferSource();
-	    source.buffer = context.createBuffer(request.response, false);
-	}
 
-	request.send();
-})
+
