@@ -5,8 +5,7 @@ function AudioThing () {
 	this.output = this.context.destination;
 }
 
-Audio.prototype.configure = function(audio) {
-	console.log(this.audio)
+AudioThing.prototype.configure = function(audio) {
   	this.audio = audio;
 	this.audio.crossOrigin = 'anonymous';
 	this.source = this.context.createMediaElementSource(this.audio);
