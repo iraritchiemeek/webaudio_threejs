@@ -3,7 +3,7 @@ $(window).load(function() {
 
 	var cube = new Cube()
 	var audioThing = new AudioThing()
-	var url = "https://soundcloud.com/uglymane/side-one-a"
+	var url = "https://soundcloud.com/spookyblack/bobby-raps-corbin-frozen-tundra?in=spookyblack/sets/bobby-raps-corbin-couch-potato"
 	cube.config();
 	cube.addCube();
 
@@ -12,8 +12,8 @@ $(window).load(function() {
       url: 'https://api.soundcloud.com/resolve.json?url=' + url + '&client_id=' + clientID
     }).done(function (res) {
 		audioThing.getFreqData(function(avgAmp){
-			// return avgAmp
 			cube.resize(avgAmp)
+			audioThing.resizeShape(avgAmp);
 		})
     	var streamUrl = res.stream_url + '?client_id=' + clientID;
       	var audio = new Audio(streamUrl);
@@ -21,7 +21,6 @@ $(window).load(function() {
 		audioThing.configure(audio);
 		audioThing.appendShape();
 		audioThing.appendAlbumArt(res.artwork_url);
-		audioThing.resizeShape();
 	})
 	
 });

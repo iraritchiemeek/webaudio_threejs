@@ -18,9 +18,8 @@ Cube.prototype.addCube = function() {
 };
 
 Cube.prototype.resize = function(freqData) {
-	console.log(freqData)
 	this.cube.scale.x = (freqData / 20);
-	this.cube.scale.y = (freqData / 20);
+	this.cube.scale.y = (freqData * 20);
 };
 
 Cube.prototype.render = function() {

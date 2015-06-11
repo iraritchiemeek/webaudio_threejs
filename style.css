@@ -19,10 +19,13 @@ html, body {
  	transform: translateX(-50%) translateY(-50%);
 }
 
-#shape {
-	z-index: 1;
+#dog {
 	background-size: 100% 100%;
 	background-image: url(http://www.picgifs.com/dog-graphics/dog-graphics/herding-dog/dog-graphics-herding-dog-870405.gif);
+}
+
+#shape {
+	z-index: 1;
 	/*background-color: black;*/
 	/*opacity: 0.7;*/
 	height: 200px;

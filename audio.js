@@ -17,8 +17,13 @@ AudioThing.prototype.configure = function(audio) {
 	this.analyser.connect(this.output);
 };
 
+AudioThing.prototype.append = function(type, target, elem) {
+	$("'#" + target + "'").append("<div " + type + "=" + elem + "/>")
+};
+
 AudioThing.prototype.appendShape = function() {
 	$("#container").append("<div id='shape'/>")
+	$("#shape").append("<div id='dog'/>")
 };
 
 AudioThing.prototype.appendAlbumArt = function(url) {
@@ -34,14 +39,9 @@ AudioThing.prototype.getFreqData = function(done) {
 	}, 30);
 };
 
-AudioThing.prototype.resizeShape = function () {
+AudioThing.prototype.resizeShape = function (avgAmp) {
 	this.audio.play();
-	var self = this;
-	var interval = setInterval(function() {
-		self.analyser.getByteFrequencyData(self.frequencyData);
-		var avgAmp = self.avg(self.frequencyData);
-		$('#shape').css({top: (avgAmp + 20) + '%'})
-	}, 30);
+	$('#dog').css({top: (avgAmp + 20) + '%'})
 };
 
 AudioThing.prototype.avg = function(array) {
