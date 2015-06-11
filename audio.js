@@ -17,17 +17,21 @@ AudioThing.prototype.configure = function(audio) {
 	this.analyser.connect(this.output);
 };
 
-AudioThing.prototype.appendTestElement = function() {
-	$("#container").append("<div id='test_shape'/>")
+AudioThing.prototype.appendShape = function() {
+	$("#container").append("<div id='shape'/>")
 };
 
-AudioThing.prototype.resizeSquare = function () {
+AudioThing.prototype.appendAlbumArt = function(url) {
+	$("#album-art").css({backgroundImage: "url(" + url + ")"})
+};
+
+AudioThing.prototype.resizeShape = function () {
 	this.audio.play();
 	var self = this;
 	var interval = setInterval(function() {
 		self.analyser.getByteFrequencyData(self.frequencyData);
 		var avgAmp = self.avg(self.frequencyData);
-		$('#test_shape').css({height: 100 - avgAmp, width: 100 - avgAmp})
+		$('#shape').css({height: 500 - avgAmp, width: 500 - avgAmp})
 	}, 30);
 };
 
