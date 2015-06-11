@@ -1,4 +1,4 @@
-function AudioThing () {
+function AudioThing() {
 	this.numOfFrequencyBands = 512;
 	this.context = new AudioContext();
 	this.frequencyData = new Uint8Array(this.numOfFrequencyBands);

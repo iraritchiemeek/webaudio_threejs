@@ -1,8 +1,12 @@
 $(window).load(function() {
 	var clientID = "9c9b8c34619bfdb30ddce8f638cd0c3e"
 
-	var audioThing = new AudioThing();
-	var url = "https://soundcloud.com/deathgrips/psspss?in=deathgrips/sets/jenny-death"
+
+	// var cube = new Cube()
+	var audioThing = new AudioThing()
+	var url = "https://soundcloud.com/youngmanlisten/meddling-loops"
+	// cube.init();
+	// cube.animate();
 
 	$.ajax({
       type: "GET",
