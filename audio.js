@@ -22,16 +22,13 @@ AudioThing.prototype.appendTestElement = function() {
 };
 
 AudioThing.prototype.resizeSquare = function () {
-	console.log(this.audio)
 	this.audio.play();
-	console.log(this.audio)
-	console.log(this.frequencyData)
-	  var self = this;
-	  var interval = setInterval(function() {
-	    self.analyser.getByteFrequencyData(self.frequencyData);
-	    var avgAmp = self.avg(self.frequencyData);
-	    $('#test_shape').css({height: 100 - avgAmp, width: 100 - avgAmp})
-	  }, 30);
+	var self = this;
+	var interval = setInterval(function() {
+		self.analyser.getByteFrequencyData(self.frequencyData);
+		var avgAmp = self.avg(self.frequencyData);
+		$('#test_shape').css({height: 100 - avgAmp, width: 100 - avgAmp})
+	}, 30);
 };
 
 AudioThing.prototype.avg = function(array) {

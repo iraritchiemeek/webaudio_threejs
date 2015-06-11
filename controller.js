@@ -1,9 +1,20 @@
 $(window).load(function() {
+	var clientID = "9c9b8c34619bfdb30ddce8f638cd0c3e"
+
 	var audioThing = new AudioThing();
-	var audio = new Audio("https://api.soundcloud.com/tracks/192238012/stream?client_id=656bff24d3cc1779a665f5d2ca2af810");
+	var url = "https://soundcloud.com/deathgrips/psspss?in=deathgrips/sets/jenny-death"
+
+
+	$.ajax({
+      type: "GET",
+      url: 'https://api.soundcloud.com/resolve.json?url=' + url + '&client_id=' + clientID
+    }).done(function (res) {
+    	console.log(res)
+    	var streamUrl = res.stream_url + '?client_id=' + clientID;
+      	var audio = new Audio(streamUrl);
 		audioThing.configure(audio);
 		audioThing.appendTestElement();
-	$(document).on("click", function() {
 		audioThing.resizeSquare();
 	})
+	
 });
