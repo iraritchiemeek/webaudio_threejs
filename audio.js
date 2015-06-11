@@ -25,6 +25,17 @@ AudioThing.prototype.appendAlbumArt = function(url) {
 	$("#album-art").css({backgroundImage: "url(" + url + ")"})
 };
 
+AudioThing.prototype.getFreqData = function() {
+	var self = this;
+	// var interval = setInterval(function() {
+		self.analyser.getByteFrequencyData(self.frequencyData);
+		var avgAmp = self.avg(self.frequencyData);
+		return avgAmp
+	// 	done(avgAmp)
+	// }, 30);
+};
+
+
 AudioThing.prototype.resizeShape = function () {
 	this.audio.play();
 	var self = this;
