@@ -18,7 +18,7 @@ AudioThing.prototype.configure = function(audio) {
 };
 
 AudioThing.prototype.append = function(type, target, elem) {
-	$("'#" + target + "'").append("<div " + type + "=" + elem + "/>")
+	$("#" + target).append("<div " + type + "=" + elem + "/>")
 };
 
 AudioThing.prototype.appendShape = function() {
@@ -39,9 +39,9 @@ AudioThing.prototype.getFreqData = function(done) {
 	}, 30);
 };
 
-AudioThing.prototype.resizeShape = function (avgAmp) {
+AudioThing.prototype.moveShape = function (avgAmp) {
 	this.audio.play();
-	$('#dog').css({top: (avgAmp + 20) + '%'})
+	$('#dog').css({'-webkit-transform' : 'rotate(' + (avgAmp *2) + 'deg)',})
 };
 
 AudioThing.prototype.avg = function(array) {
