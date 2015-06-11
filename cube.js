@@ -17,10 +17,14 @@ Cube.prototype.addCube = function() {
 	this.camera.position.z = 5;
 };
 
-Cube.prototype.render = function(freqData) {
-	// console.log(freqData)
+Cube.prototype.resize = function(freqData) {
+	console.log(freqData)
+	this.cube.scale.x = (freqData / 20);
+	this.cube.scale.y = (freqData / 20);
+};
+
+Cube.prototype.render = function() {
 	requestAnimationFrame( this.render.bind(this) );
-	this.cube.scale.x = (freqData / 1000);
 	this.cube.rotation.x += 0.01;
 	this.cube.rotation.y += 0.01;
 	this.renderer.render(this.scene, this.camera);

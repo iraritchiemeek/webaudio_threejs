@@ -11,14 +11,13 @@ $(window).load(function() {
       type: "GET",
       url: 'https://api.soundcloud.com/resolve.json?url=' + url + '&client_id=' + clientID
     }).done(function (res) {
-		// cube.render(audioThing.getFreqData(function(avgAmp){
-		// 	console.log(avgAmp)
-		// 	// return avgAmp
-		// 	// cube.render(avgAmp)
-		// }))
-    	cube.render(audioThing.getFreqData())
+		audioThing.getFreqData(function(avgAmp){
+			// return avgAmp
+			cube.resize(avgAmp)
+		})
     	var streamUrl = res.stream_url + '?client_id=' + clientID;
       	var audio = new Audio(streamUrl);
+      	cube.render();
 		audioThing.configure(audio);
 		audioThing.appendShape();
 		audioThing.appendAlbumArt(res.artwork_url);

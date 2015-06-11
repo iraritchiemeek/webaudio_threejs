@@ -7,7 +7,6 @@ html, body {
 	background-size: 100% 100%;
 }
 
-
 #album-art {
 	background-size: 100% 100%;
 	background: black;
@@ -21,10 +20,13 @@ html, body {
 }
 
 #shape {
-	background-color: black;
-	opacity: 0.7;
-	height: 500px;
-	width: 500px;
+	z-index: 1;
+	background-size: 100% 100%;
+	background-image: url(http://www.picgifs.com/dog-graphics/dog-graphics/herding-dog/dog-graphics-herding-dog-870405.gif);
+	/*background-color: black;*/
+	/*opacity: 0.7;*/
+	height: 200px;
+	width: 300px;
 	top: 50%;
  	left: 50%;
  	position: absolute;

@@ -25,16 +25,14 @@ AudioThing.prototype.appendAlbumArt = function(url) {
 	$("#album-art").css({backgroundImage: "url(" + url + ")"})
 };
 
-AudioThing.prototype.getFreqData = function() {
+AudioThing.prototype.getFreqData = function(done) {
 	var self = this;
-	// var interval = setInterval(function() {
+	var interval = setInterval(function() {
 		self.analyser.getByteFrequencyData(self.frequencyData);
 		var avgAmp = self.avg(self.frequencyData);
-		return avgAmp
-	// 	done(avgAmp)
-	// }, 30);
+		done(avgAmp)
+	}, 30);
 };
-
 
 AudioThing.prototype.resizeShape = function () {
 	this.audio.play();
@@ -42,7 +40,7 @@ AudioThing.prototype.resizeShape = function () {
 	var interval = setInterval(function() {
 		self.analyser.getByteFrequencyData(self.frequencyData);
 		var avgAmp = self.avg(self.frequencyData);
-		$('#shape').css({height: 500 - avgAmp, width: 500 - avgAmp})
+		$('#shape').css({top: (avgAmp + 20) + '%'})
 	}, 30);
 };
 
