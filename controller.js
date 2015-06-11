@@ -5,17 +5,21 @@ $(window).load(function() {
 	var audioThing = new AudioThing()
 	var url = "https://soundcloud.com/kirankai/eight-sides"
 	cube.config();
-	cube.addCube();
 	audioThing.append("id", "container", "shape");
+			cube.addCube();
 
 	$.ajax({
       type: "GET",
       url: 'https://api.soundcloud.com/resolve.json?url=' + url + '&client_id=' + clientID
     }).done(function (res) {
-		audioThing.getFreqData(function(avgAmp){
-			cube.resize(avgAmp)
+		audioThing.getAvgFreqData(function(avgAmp){
 			audioThing.moveShape(avgAmp);
 		})
+
+		audioThing.getFreqData(function(amp){
+			cube.resize(amp)
+		})
+
     	var streamUrl = res.stream_url + '?client_id=' + clientID;
       	var audio = new Audio(streamUrl);
       	cube.render();

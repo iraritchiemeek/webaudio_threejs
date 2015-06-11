@@ -30,12 +30,21 @@ AudioThing.prototype.appendAlbumArt = function(url) {
 	$("#album-art").css({backgroundImage: "url(" + url + ")"})
 };
 
-AudioThing.prototype.getFreqData = function(done) {
+AudioThing.prototype.getAvgFreqData = function(done) {
 	var self = this;
 	var interval = setInterval(function() {
 		self.analyser.getByteFrequencyData(self.frequencyData);
 		var avgAmp = self.avg(self.frequencyData);
 		done(avgAmp)
+	}, 30);
+};
+
+AudioThing.prototype.getFreqData = function(done) {
+	var self = this;
+	var interval = setInterval(function() {
+		self.analyser.getByteFrequencyData(self.frequencyData);
+		var amp = self.frequencyData;
+		done(amp)
 	}, 30);
 };
 
