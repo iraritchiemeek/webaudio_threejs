@@ -6,7 +6,10 @@ $(window).load(function() {
 	var url = "https://soundcloud.com/nickbrosman/i-wonder-kanye-west"
 	cube.config();
 	audioThing.append("id", "container", "shape");
-			cube.addCube();
+	for (var i = 0; i < 20; i++) {
+		audioThing.append("class", "burnsies", "burns");
+	}
+	cube.addCube();
 
 	$.ajax({
       type: "GET",
@@ -15,6 +18,7 @@ $(window).load(function() {
     	
 		audioThing.getAvgFreqData(function(avgAmp){
 			audioThing.moveShape(avgAmp);
+			audioThing.resizeBurns(avgAmp);
 			cube.resize(avgAmp)
 		})
 

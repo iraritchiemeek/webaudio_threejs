@@ -44,8 +44,12 @@ Cube.prototype.addCube = function(amp) {
 };
 
 Cube.prototype.resize = function(freqData) {
-	var avgAmp = (freqData / 200)
-	this.cube.scale.set(freqData, freqData, freqData)
+	if (freqData > 85) {
+		var size = (freqData / 100)
+	} else {
+		var size = (freqData / 80)	
+	}
+	this.cube.scale.set(size, size, size)
 };
 
 Cube.prototype.render = function() {
