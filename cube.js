@@ -14,7 +14,7 @@ Cube.prototype.config = function() {
 
 Cube.prototype.addCube = function(amp) {
 	var r = 800;
-	this.segments = 512;
+	this.segments = 20000;
 	this.positions = new Float32Array( this.segments * 3 );
 	this.colors = new Float32Array( this.segments * 3 );
 	this.geometry = new THREE.BufferGeometry();
@@ -40,27 +40,12 @@ Cube.prototype.addCube = function(amp) {
 	this.geometry.addAttribute( 'color', new THREE.BufferAttribute( this.colors, 3 ) );
 
 	this.geometry.computeBoundingSphere();
-	console.log(this)
+	// console.log(this.cube)
 };
 
-Cube.prototype.resize = function(amp) {
-
-	var r = amp.length
-
-	for ( var i = 0; i < this.segments; i ++ ) {
-		var x = Math.random() * r - r / 2;
-		var y = Math.random() * r - r / 2;
-		var z = Math.random() * r - r / 2;
-
-		this.positions[ i * 3 ] = x;
-		// console.log(amp)
-		this.positions[ i * 3 + 1 ] = y;
-		this.positions[ i * 3 + 2 ] = z;
-
-	}
-
-	this.geometry.addAttribute( 'position', new THREE.BufferAttribute( this.positions, 3 ) );
-
+Cube.prototype.resize = function(freqData) {
+	var avgAmp = (freqData / 200)
+	this.cube.scale.set(freqData, freqData, freqData)
 };
 
 Cube.prototype.render = function() {
