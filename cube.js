@@ -54,7 +54,7 @@ Cube.prototype.resize = function(freqData) {
 
 Cube.prototype.render = function() {
 	requestAnimationFrame( this.render.bind(this) );
-	// this.cube.rotation.x += 0.01;
-	// this.cube.rotation.y += 0.01;
+	// this.cube.rotation.x += 0.1;
+	// this.cube.rotation.y += 0.1;
 	this.renderer.render(this.scene, this.camera);
 };

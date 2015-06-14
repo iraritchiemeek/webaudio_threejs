@@ -3,10 +3,10 @@ $(window).load(function() {
 
 	var cube = new Cube()
 	var audioThing = new AudioThing()
-	var url = "https://soundcloud.com/nickbrosman/i-wonder-kanye-west"
+	var url = "https://soundcloud.com/swumbeats/buggn-95"
 	cube.config();
 	audioThing.append("id", "container", "shape");
-	for (var i = 0; i < 20; i++) {
+	for (var i = 0; i < 25; i++) {
 		audioThing.append("class", "burnsies", "burns");
 	}
 	cube.addCube();
