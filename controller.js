@@ -3,21 +3,23 @@ $(window).load(function() {
 
 	var cube = new Cube()
 	var audioThing = new AudioThing()
-	var url = "https://soundcloud.com/kirankai/eight-sides"
+	var url = "https://soundcloud.com/swumbeats/buggn-95"
 	cube.config();
 	audioThing.append("id", "container", "shape");
-			cube.addCube();
+	for (var i = 0; i < 25; i++) {
+		audioThing.append("class", "burnsies", "burns");
+	}
+	cube.addCube();
 
 	$.ajax({
       type: "GET",
       url: 'https://api.soundcloud.com/resolve.json?url=' + url + '&client_id=' + clientID
     }).done(function (res) {
+    	
 		audioThing.getAvgFreqData(function(avgAmp){
 			audioThing.moveShape(avgAmp);
-		})
-
-		audioThing.getFreqData(function(amp){
-			cube.resize(amp)
+			audioThing.resizeBurns(avgAmp);
+			cube.resize(avgAmp)
 		})
 
     	var streamUrl = res.stream_url + '?client_id=' + clientID;

@@ -50,7 +50,7 @@ AudioThing.prototype.getFreqData = function(done) {
 
 AudioThing.prototype.moveShape = function (avgAmp) {
 	this.audio.play();
-	$('#dog').css({'-webkit-transform' : 'rotate(' + (avgAmp *2) + 'deg)',})
+	$('#dog').css({'-webkit-transform' : 'skewY(' + (avgAmp * 5) + 'deg)',})
 };
 
 AudioThing.prototype.avg = function(array) {
@@ -61,4 +61,7 @@ AudioThing.prototype.avg = function(array) {
 	return (avg / array.length) 
 };
 
+AudioThing.prototype.resizeBurns = function(avgAmp) {
+	$(".burns").css({height:(avgAmp * 10)})
+};
 
