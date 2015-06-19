@@ -3,7 +3,7 @@ $(window).load(function() {
 
 	var cube = new Cube()
 	var audioThing = new AudioThing()
-	var url = "https://soundcloud.com/swumbeats/buggn-95"
+	var url = "https://soundcloud.com/djharrison-1/brown-sugar-drummed-out-mix"
 	cube.config();
 	audioThing.append("id", "container", "shape");
 	for (var i = 0; i < 25; i++) {
